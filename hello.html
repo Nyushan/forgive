@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            height: 500px;
+            background: #7ec8f5;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .left-side {
+            width: 40%;
+            position: relative;
+        }
+
+        .photo-frame {
+            width: 250px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            transform: rotate(-2deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .teddy {
+            font-size: 60px;
+            position: absolute;
+            bottom: -30px;
+            left: -20px;
+        }
+
+        .right-side {
+            width: 40%;
+            text-align: center;
+        }
+
+        .passcode-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            width: 40px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 40px;
+            background: #ffffff55;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 60px);
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .key {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .key:hover {
+            background: #e0e0e0;
+        }
+
+        h2 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-side">
+            <div class="photo-frame">
+                <img src="images.jpg" alt="cute Photo">
+            </div>
+            <div class="teddy">🧸</div>
+        </div>
+
+        <div class="right-side">
+            <h2>Enter passcode</h2>
+            <div class="passcode-boxes">
+                <div class="box" id="b1"></div>
+                <div class="box" id="b2"></div>
+                <div class="box" id="b3"></div>
+                <div class="box" id="b4"></div>
+            </div>
+
+            <div class="keypad">
+                <button class="key" onclick="addNumber(1)">1</button>
+                <button class="key" onclick="addNumber(2)">2</button>
+                <button class="key" onclick="addNumber(3)">3</button>
+                <button class="key" onclick="addNumber(4)">4</button>
+                <button class="key" onclick="addNumber(5)">5</button>
+                <button class="key" onclick="addNumber(6)">6</button>
+                <button class="key" onclick="addNumber(7)">7</button>
+                <button class="key" onclick="addNumber(8)">8</button>
+                <button class="key" onclick="addNumber(9)">9</button>
+                <button class="key">*</button>
+                <button class="key" onclick="addNumber(0)">0</button>
+                <button class="key">#</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let code = "";
+
+        function addNumber(num) {
+            if (code.length < 4) {
+                code += num;
+                document.getElementById("b" + code.length).innerHTML = "•";
+            }
+
+            if (code.length === 4) {
+                setTimeout(() => {
+                    if (code === "2068") {
+                        alert("My dear friend/sister❤️. Plz fogive me even though its not my fault❤️");
+                    } else {
+                        alert("Wrong Passcode");
+                    }
+                    code = "";
+                    for (let i = 1; i <= 4; i++) {
+                        document.getElementById("b" + i).innerHTML = "";
+                    }
+                }, 300);
+            }
+        }
+    </script>
+
+</body>
+</html>
